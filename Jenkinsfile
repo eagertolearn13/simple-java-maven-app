@@ -1,11 +1,14 @@
 pipeline {
-    agent any
+    agent { label 'ubuntu' }
     tools {
         maven 'default'
     }
     parameters {
         string(defaultValue: "DEV", description: 'What environment?', name: 'DEV_PROJECT')
     }
+    options {
+        buildDiscarder(logRotator(daysToKeepStr: '3'))
+      }
 
     stages {
         stage('Checking Parameters') {
