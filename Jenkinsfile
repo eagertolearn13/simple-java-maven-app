@@ -3,16 +3,10 @@ pipeline {
     tools {
         maven 'default'
     }
-    stages {
-        stage('Prepping for the build') {
-            steps{
-                step{
-                    parameters:
-                        [$class: 'TextParameterDefinition', defaultValue: 'dev', description: 'dev env', name: 'DEV_PROJECT']
-                  }
-            }
+    parameters:
+        [$class: 'TextParameterDefinition', defaultValue: 'dev', description: 'dev env', name: 'DEV_PROJECT']
 
-        }
+    stages:{
         stage('Build') {
             steps {
                 sh "DEV_PROJECT is ${params.DEV_PROJECT}"
