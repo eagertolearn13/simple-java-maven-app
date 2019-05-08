@@ -4,7 +4,7 @@ pipeline {
         maven 'default'
     }
     parameters:
-        [$class: 'TextParameterDefinition', defaultValue: 'dev', description: 'dev env', name: 'DEV_PROJECT']
+        string(defaultValue: "DEV", description: 'What environment?', name: 'DEV_PROJECT')
 
     stages:{
         stage('Build') {
