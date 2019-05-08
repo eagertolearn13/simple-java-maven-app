@@ -3,9 +3,10 @@ pipeline {
     tools {
         maven 'default'
     }
-    parameters:
+    parameters {
         string(defaultValue: "DEV", description: 'What environment?', name: 'DEV_PROJECT')
-
+    }
+    
     stages:{
         stage('Build') {
             steps {
