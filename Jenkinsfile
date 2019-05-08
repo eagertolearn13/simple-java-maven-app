@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checking Parameters') {
             steps {
-                sh "DEV_PROJECT is ${params.DEV_PROJECT}"
+                sh "echo DEV_PROJECT is ${params.DEV_PROJECT}"
             }
         }
         stage('Build') {
