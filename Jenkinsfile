@@ -4,8 +4,17 @@ pipeline {
         maven 'default'
     }
     stages {
+        stage('Prepping for the build') {
+            steps{
+                parameters: [
+                            [$class: 'TextParameterDefinition', defaultValue: 'dev', description: 'dev env', name: 'DEV_PROJECT']
+                          ] )
+            }
+
+        }
         stage('Build') {
             steps {
+                sh "DEV_PROJECT is ${params.DEV_PROJECT}"
                 sh 'mvn -B -DskipTests clean package'
             }
         }
