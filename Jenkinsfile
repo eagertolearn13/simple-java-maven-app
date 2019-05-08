@@ -8,11 +8,15 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Checking Parameters') {
             steps {
                 sh "DEV_PROJECT is ${params.DEV_PROJECT}"
-                sh 'mvn -B -DskipTests clean package'
             }
+        }
+        stage('Build') {
+             steps {
+                 sh 'mvn -B -DskipTests clean package'
+              }
         }
         stage('Test') {
             steps {
