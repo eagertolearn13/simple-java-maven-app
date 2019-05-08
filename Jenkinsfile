@@ -9,6 +9,9 @@ pipeline {
     options {
         buildDiscarder(logRotator(daysToKeepStr: '3'))
       }
+     triggers{
+           snapshotDependencies()
+     }
 
     stages {
         stage('Checking Parameters') {
