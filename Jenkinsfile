@@ -6,8 +6,8 @@ pipeline {
     parameters {
         string(defaultValue: "DEV", description: 'What environment?', name: 'DEV_PROJECT')
     }
-    
-    stages:{
+
+    stages {
         stage('Build') {
             steps {
                 sh "DEV_PROJECT is ${params.DEV_PROJECT}"
