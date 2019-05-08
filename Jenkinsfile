@@ -9,9 +9,6 @@ pipeline {
     options {
         buildDiscarder(logRotator(daysToKeepStr: '3'))
       }
-     triggers{
-           snapshotDependencies()
-     }
 
     stages {
         stage('Checking Parameters') {
@@ -21,7 +18,8 @@ pipeline {
         }
         stage('Build') {
              steps {
-                 sh 'mvn -B -DskipTests clean package'
+                 withMaven(
+                 sh 'mvn -B -DskipTests clean package')
               }
         }
         stage('Test') {
