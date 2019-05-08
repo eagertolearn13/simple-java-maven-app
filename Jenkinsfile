@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage('Prepping for the build') {
-            steps{
+            step{
                 parameters:
                     [$class: 'TextParameterDefinition', defaultValue: 'dev', description: 'dev env', name: 'DEV_PROJECT']
             }
