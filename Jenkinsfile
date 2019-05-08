@@ -19,7 +19,8 @@ pipeline {
         stage('Build') {
              steps {
                  withMaven(
-                 sh 'mvn -B -DskipTests clean package')
+                    maven: 'default')
+                 sh 'mvn -B -DskipTests clean package'
               }
         }
         stage('Test') {
