@@ -14,12 +14,11 @@ pipeline {
         stage('Checking Parameters') {
             steps {
                 sh "echo DEV_PROJECT is ${params.DEV_PROJECT}"
+                cleanWs()
             }
         }
         stage('Build') {
              steps {
-                 withMaven(
-                    maven: 'default')
                  sh 'mvn -B -DskipTests clean package'
               }
         }
